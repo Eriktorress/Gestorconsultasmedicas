@@ -9,7 +9,7 @@ export class DbService {
 
   db: SQLiteObject = null;
   
-  constructor(private router:Router,private sqlite: SQLite) { }
+  constructor() { }
   /**
    * Permite guardar un objeto SQLiteObject
    * en la variable db
@@ -92,11 +92,6 @@ export class DbService {
     SET active=?
     WHERE user_name=?`;
     return this.db.executeSql(sql, [sesion.active,sesion.user_name]);
-  }
-
-  canActivate(){
-    this.router.navigate(['login']);
-    return false;
   }
 }
 

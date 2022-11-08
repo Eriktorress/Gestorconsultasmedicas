@@ -15,8 +15,8 @@ import { Storage } from '@ionic/storage';
 export class LoginPage implements OnInit {
 
   login: any={
-    modeloUsuario: '',
-    modeloContrasena:''
+    Usuario: '',
+    Password:''
   }
   field:string="";
 
@@ -32,6 +32,19 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ingresar(){
+    // Se valida que el usuario ingreso todos los datos
+    if(this.validateModel(this.login)){
+      // Se obtiene si existe alguna data de sesión
+      this.authenticationSerive.login(this.login);
+    
+      
+    }
+    else{
+      this.presentToast("Falta: "+this.field);
+    }
   }
   registrar(){
     this.createSesionData(this.login);
@@ -114,7 +127,7 @@ export class LoginPage implements OnInit {
       })
   }
   async presentAlertConfirm() {
-    const alert = await this.alertcontroler.create({ 
+    const alert = await this.alertcontroler.create({
       header: 'Creación de Usuario',
       message: 'Mensaje <strong>El usuario no existe, desea registrarse?</strong>',
       buttons: [

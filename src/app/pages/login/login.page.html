@@ -9,18 +9,18 @@
 
 <ion-item class="ion-margin-top">
   <ion-label position="floating"> Usuarios</ion-label>
-  <ion-input  [(ngModel)]="modeloUsuario"></ion-input>
+  <ion-input  [(ngModel)]="login.Usuario"></ion-input>
 </ion-item>
 
 <ion-item class="ion-margin-top">
   <ion-label position="floating"> contraseña</ion-label>
-  <ion-input type="password" [(ngModel)]="modeloContrasena"></ion-input>
+  <ion-input type="password" [(ngModel)]="login.Password"></ion-input>
 </ion-item>
 
-<ion-button (click)="validarCredenciales()" class="ion-margin-top" 
+<ion-button (click)="ingresar()" class="ion-margin-top" 
 expand="block"> Ingresar</ion-button>
 
-<ion-button (click)="mostrarformulario()" class="ion-margin-top" 
+<ion-button (click)="registrar()" class="ion-margin-top" 
 expand="block"> Nuevo usuario</ion-button>
 
 </ion-content>
