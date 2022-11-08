@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { ToastController, AlertController } from '@ionic/angular';
+import { AutenthicationService } from 'src/app/services/autenthication.service';
 import { DbService } from 'src/app/services/db.service';
+import { Storage } from '@ionic/storage';
+
+
 
 @Component({
   selector: 'app-login',
@@ -9,50 +14,117 @@ import { DbService } from 'src/app/services/db.service';
 })
 export class LoginPage implements OnInit {
 
-  modeloUsuario: string = '';
-  modeloContrasena: string = '';
+  login: any={
+    modeloUsuario: '',
+    modeloContrasena:''
+  }
+  field:string="";
 
-  constructor(private dbservice: DbService, private alertcontroler: AlertController) {
+  constructor(public toastController: ToastController,
+    private dbservice: DbService, 
+    private alertcontroler: AlertController,
+    private router: Router,
+    private storage: Storage,
+    public authenticationSerive:AutenthicationService)
+  
+  {
     console.log('pagina Login iniciada')
-
   }
 
   ngOnInit() {
   }
-
-  validarCredenciales() {
-    console.log(this.modeloUsuario);
-    console.log(this.modeloContrasena);
+  registrar(){
+    this.createSesionData(this.login);
   }
-
-  async mostrarformulario() {
-    const alert = await this.alertcontroler.create({
-      header: 'Nuevo usuario',
-      inputs: [
-        {
-          name: 'correo',
-          type: 'text',
-          placeholder: 'correo Electrónico'
-        },
-        {
-          name: 'contrasena',
-          type: 'password',
-          placeholder: 'Contraseña'
-        },
-      ],
+  /**
+   * Función que genera (registra) una nueva sesión
+   * @param login 
+   */
+  createSesionData(login: any) {
+    if(this.validateModel(login)){ // Se valida que se ingresen todos los datos
+      /**
+       * Se hace una copia del login, se hace así ya que
+       * el operador '=' no haceuna copia de los datos, si no
+       * que crea una nueva referencia a los mismos datos.
+       * Por eso se utiliza el Object.assign
+       */
+      let copy = Object.assign({},login);
+      copy.Active=1; // Se agrega el valor active = 1 a la copia
+      this.dbservice.createSesionData(copy) // la copia se le apsa a la función para crear la sesion
+      .then((data)=>{ // si la sentencia se ejecuto correctamente
+        this.presentToast("Bienvenido"); // Se muestra el mensaje de bienvenido
+        this.storage.set("USER_DATA",data);  // Se setea el USER_DATA en el storage
+        this.router.navigate(['home']); // Se navega hasta el home
+      })
+      .catch((error)=>{
+        this.presentToast("El usuario ya existe");
+      })
+    }
+    else{
+      this.presentToast("Falta: "+this.field);
+    }
+  }
+  /**
+   * validateModel sirve para validar que se ingrese algo en los
+   * campos del html mediante su modelo
+   */
+  validateModel(model:any){
+    // Recorro todas las entradas que me entrega Object entries y obtengo su clave, valor
+    for (var [key, value] of Object.entries(model)) {
+      // Si un valor es "" se retornara false y se avisara de lo faltante
+      if (value=="") {
+        // Se asigna el campo faltante
+        this.field=key;
+        // Se retorna false
+        return false;
+      }
+    }
+    return true;
+  }
+  /**
+   * Muestra un toast al usuario
+   * @param message Mensaje a presentar al usuario
+   * @param duration Duración el toast, este es opcional
+   */
+  async presentToast(message:string, duration?:number){
+    const toast = await this.toastController.create(
+      {
+        message:message,
+        duration:duration?duration:2000
+      }
+    );
+    toast.present();
+  }
+  /**
+   * Función parte del ciclo de vida de un componente
+   */
+  ionViewWillEnter(){
+    console.log('ionViewDidEnter');
+      // Se valida que exista una sesión activa
+      this.dbservice.sesionActive()
+      .then((data)=>{
+        if(data!=undefined){
+          this.storage.set("USER_DATA",data); 
+          this.router.navigate(['home']);
+        }
+      })
+      .catch((error)=>{
+        console.error(error);
+        this.router.navigate(['login']);
+      })
+  }
+  async presentAlertConfirm() {
+    const alert = await this.alertcontroler.create({ 
+      header: 'Creación de Usuario',
+      message: 'Mensaje <strong>El usuario no existe, desea registrarse?</strong>',
       buttons: [
         {
-          text: 'Cancelar',
-          role: 'cancel',
-          cssClass: 'secondary',
+          text: 'NO',
+          role: 'cancel'
+        }, {
+          text: 'SI',
           handler: () => {
-            console.log('Confirm Cancel')
-          }
-        },
-        {
-          text: 'Almacenar',
-          handler: (data) => {
-            this.almacenarUsuario(data.correo, data.contrasena);
+            this.createSesionData(this.login)
           }
         }
       ]
@@ -61,7 +133,4 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  almacenarUsuario(correo, contrasena) {
-    this.dbservice.almacenarUsuario(correo, contrasena);
-  }
 }
