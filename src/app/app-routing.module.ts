@@ -24,7 +24,11 @@ const routes: Routes = [
   {
     path: 'especialistas',
     loadChildren: () => import('./pages/especialistas/especialistas.module').then( m => m.EspecialistasPageModule)
+  },  {
+    path: 'map',
+    loadChildren: () => import('./pages/map/map.module').then( m => m.MapPageModule)
   },
+
 ];
 
 @NgModule({
