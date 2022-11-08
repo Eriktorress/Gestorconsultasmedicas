@@ -1,0 +1,7 @@
+{
+  "name": "gestorconsultasmedicas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
