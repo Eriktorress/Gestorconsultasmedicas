@@ -38,5 +38,6 @@ export class MapPage implements OnInit {
       ]
 
     })
+    this.map.resize();
   }
 }
