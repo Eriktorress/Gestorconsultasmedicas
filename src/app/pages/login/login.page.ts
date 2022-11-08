@@ -126,7 +126,9 @@ export class LoginPage implements OnInit {
         this.router.navigate(['login']);
       })
   }
-  async presentAlertConfirm() {
+
+
+  async formulario() {
     const alert = await this.alertcontroler.create({
       header: 'Creación de Usuario',
       message: 'Mensaje <strong>El usuario no existe, desea registrarse?</strong>',

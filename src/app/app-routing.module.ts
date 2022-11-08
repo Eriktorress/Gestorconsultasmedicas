@@ -21,6 +21,10 @@ const routes: Routes = [
     path: 'e404',
     loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
   },
+  {
+    path: 'especialistas',
+    loadChildren: () => import('./pages/especialistas/especialistas.module').then( m => m.EspecialistasPageModule)
+  },
 ];
 
 @NgModule({
