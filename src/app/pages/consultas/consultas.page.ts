@@ -1,42 +1,66 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { DbconsultaService } from 'src/app/services/dbconsulta.service';
+
 
 @Component({
   selector: 'app-consultas',
-  templateUrl: './consultas.page.html',
-  styleUrls: ['./consultas.page.scss'],
+  templateUrl: 'consultas.page.html',
+  styleUrls: ['consultas.page.scss'],
 })
-@Component({
-  selector: 'app-modificar',
-  templateUrl: './modificar.page.html',
-  styleUrls: ['./modificar.page.scss'],
-})
-export class ModificarPage implements OnInit {
+export class ConsultasPage {
 
-  idConsulta = "";
-  tituloConsulta = "";
-  especialistaConsulta = "";
-  textoConsulta = "";
+  noticias: any = [
+    {
+      titulo: "Titulo de la Consulta",
+      especialistas: "Especialistas",
+      texto: "Texto "
+    }
+  ]
 
-  constructor(private router:Router, private activedroute: ActivatedRoute, private dbservice: DbconsultaService) {
-    this.activedroute.queryParams.subscribe(param =>{
-      if(this.router.getCurrentNavigation().extras.state){
-        this.idConsulta = this.router.getCurrentNavigation().extras.state.idEnviado;
-        this.tituloConsulta = this.router.getCurrentNavigation().extras.state.tituloEnviado;
-        this.especialistaConsulta = this.router.getCurrentNavigation().extras.state.tituloEnviado;
-        this.textoConsulta = this.router.getCurrentNavigation().extras.state.textoEnviado;
+  constructor(private router: Router, private servicioBD: DbconsultaService) {}
+
+  ngOnInit(){
+    //this.servicioBD.presentAlert("1");
+    this.servicioBD.dbState().subscribe((res) =>{
+      //this.servicioBD.presentAlert("2");
+      if(res){
+        //this.servicioBD.presentAlert("3");
+        this.servicioBD.fetchConsultas().subscribe(item =>{
+          this.noticias = item;
+        })
       }
-    })
+      //this.servicioBD.presentAlert("4");
+    });
   }
 
-  editar(){
-    this.dbservice.updateConsulta(this.idConsulta, this.tituloConsulta,this.especialistaConsulta,this.textoConsulta);
-    this.dbservice.presentToast("Noticia Modificada");
-    this.router.navigate(['/home']);
+  getItem($event) {
+    const valor = $event.target.value;
+    console.log('valor del control: ' + valor);
+
   }
 
-  ngOnInit() {
+  agregar() {
+
+  }
+
+  editar(item) {
+    this.servicioBD.presentToast("Listo");
+    let navigationextras: NavigationExtras = {
+      state : {
+        idEnviado : item.id,
+        tituloEnviado : item.titulo,
+        textoEnviado : item.texto
+      }
+    }
+    this.servicioBD.presentToast("Aqui");
+    this.router.navigate(['/modificar'],navigationextras);
+
+  }
+
+  eliminar(item) {
+    this.servicioBD.deleteConsulta(item.id);
+    this.servicioBD.presentToast("Consulta Eliminada");
   }
 
 }

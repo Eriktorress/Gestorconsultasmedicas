@@ -1,37 +1,66 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Modificar Noticia</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
-  <div class="ion-padding-vertical">
-    <ion-card class="ion-text-center">
-      <ion-card-title>
-        <ion-label>
-          <h1>Modificar Noticia</h1>
-        </ion-label>
-      </ion-card-title>
-      
-      <ion-card-content>
-        <ion-item>
-          <ion-label position="floating">Titulo</ion-label>
-          <ion-input type="text" [(ngModel)]="tituloConsulta"></ion-input>
-        </ion-item>
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+       Consultas
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+    
+  <ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Consultas</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <br>
+    <h1>Listado de Elementos</h1>
+  
+    <ion-searchbar (ionInput)="getItem($event)"></ion-searchbar>
+  
+    <ion-list>
+  
+      <ion-item-sliding *ngFor="let item of noticias">
   
         <ion-item>
-          <ion-label position="floating">Texto Noticia</ion-label>
-          <ion-input type="text" [(ngModel)]="especialistaConsulta"></ion-input>
-        </ion-item>
+          <ion-avatar item-start>
+            <img src="assets/icon/favicon.png">
+          </ion-avatar>
   
-        <ion-item>
-          <ion-label position="floating">Texto Noticia</ion-label>
-          <ion-input type="text" [(ngModel)]="textConsulta"></ion-input>
-        </ion-item>
-      </ion-card-content>
-      <ion-button shape="block" (click)="guardar()">Guardar Consulta</ion-button>
-    </ion-card>
+          <ion-label>
+            <h2>{{ item.titulo }}</h2>
+            <!-- word-wrap para los cortes entre palabras  white-space para que aparezca todo el texto en varias lineas y no se corte-->
+            <p style="word-wrap: break-word; white-space: normal;">{{ item.texto }}</p>
+          </ion-label>
   
-  </div>
+        </ion-item>
+        <!-- El error era que el evento click se lo puse al icono y no al boton completo -->
+        <ion-item-options side="end">
+          <ion-item-option (click)="editar(item)">
+            <ion-icon name="create" ></ion-icon> Editar
+          </ion-item-option>
+          <ion-item-option color="danger" (click)="eliminar(item)">
+            <ion-icon name="trash"></ion-icon> Eliminar
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+  
+    </ion-list>
+  
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button [routerLink]="['/agregar']">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <!--
+  <ion-fab-list side="top">
+        <ion-fab-button><ion-icon name="logo-vimeo"></ion-icon></ion-fab-button>
+        <ion-fab-button><ion-icon name="logo-vimeo"></ion-icon></ion-fab-button>
+      </ion-fab-list>
+  
+      -->
+  
+    </ion-fab>
   
   </ion-content>
+  

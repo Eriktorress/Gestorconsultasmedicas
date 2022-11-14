@@ -33,16 +33,12 @@
         <ion-list>
           <ion-item><ion-icon name="person-circle-outline" slot="start"></ion-icon>Perfil </ion-item>
           <ion-item><ion-icon name="fitness-outline" slot="start"></ion-icon> Mi estado </ion-item>
-          <ion-item><ion-icon name="calendar-number-outline"  slot="start"></ion-icon> Mis horas </ion-item>
+          <ion-item [routerLink]="['/consultas']"><ion-icon name="calendar-number-outline"  slot="start"></ion-icon> Mis consultas </ion-item>
           <ion-item><ion-icon name="bag-add-outline" slot="start"></ion-icon> Historial de atenciones </ion-item>
           <ion-item [routerLink]="['/especialistas']"><ion-icon name="glasses-outline" slot="start"></ion-icon> Especialistas </ion-item>
           <ion-item><ion-icon name="notifications-outline" slot="start"></ion-icon> Notificaciones </ion-item>
-<<<<<<< HEAD
-          <ion-item><ion-icon name="map-outline" slot="start"></ion-icon> Geocalización </ion-item>
-         
-=======
-          <ion-item [routerLink]="['/map']"><ion-icon name="glasses-outline" slot="start"></ion-icon> Maps </ion-item>
->>>>>>> abfc4a2e3128f5d8476e2c882dd313a018b5a3ab
+          <ion-item [routerLink]="['/map']"><ion-icon name="map-outline" slot="start"></ion-icon> Geocalización </ion-item>
+  
         </ion-list>
       </ion-content>
     </ion-menu>

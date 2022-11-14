@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { ConsultasPage } from './consultas.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ConsultasPage
+    component: ConsultasPage,
   },
   {
     path: 'agregar',
-    loadChildren: () => import('./agregar/agregar.module').then( m => m.AgregarPageModule)
+    loadChildren: () => import('../agregar/agregar.module').then( m => m.AgregarPageModule)
   },
   {
     path: 'modificar',
