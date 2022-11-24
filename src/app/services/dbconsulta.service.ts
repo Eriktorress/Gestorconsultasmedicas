@@ -12,7 +12,7 @@ export class DbconsultaService {
   public database: SQLiteObject;
 
   tablaConsultas: string = "CREATE TABLE IF NOT EXISTS consulta(id INTEGER PRIMARY KEY autoincrement, titulo VARCHAR(50) NOT NULL, especialista VARCHAR(50) NOT NULL, texto TEXT NOT NULL);";
-  registro: string = "INSERT or IGNORE INTO consulta(id, titulo, especialista, texto) VALUES (1, 'Titulo consulta', 'Texto de la consulta que se quiere mostrar');";
+  registro: string = "INSERT or IGNORE INTO consulta(id, titulo, especialista, texto) VALUES (1, 'Titulo consulta', especialista,'Texto de la consulta que se quiere mostrar');";
   listaConsultas = new BehaviorSubject([]);
 
   private isDbReady: BehaviorSubject<boolean> = new BehaviorSubject(false);

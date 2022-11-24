@@ -13,7 +13,7 @@ export class ConsultasPage {
   noticias: any = [
     {
       titulo: "Titulo de la Consulta",
-      especialistas: "Especialistas",
+      especialista: "Especialistas",
       texto: "Texto "
     }
   ]
@@ -50,6 +50,7 @@ export class ConsultasPage {
       state : {
         idEnviado : item.id,
         tituloEnviado : item.titulo,
+        especialistaEnviado : item.especialista,
         textoEnviado : item.texto
       }
     }
