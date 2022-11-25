@@ -8,12 +8,12 @@ const routes: Routes = [
     component: ConsultasPage,
   },
   {
-    path: 'agregar',
-    loadChildren: () => import('../agregar/agregar.module').then( m => m.AgregarPageModule)
-  },
-  {
     path: 'modificar',
     loadChildren: () => import('./modificar/modificar.module').then( m => m.ModificarPageModule)
+  },
+  {
+    path: 'agregar',
+    loadChildren: () => import('./agregar/agregar.module').then( m => m.AgregarPageModule)
   }
 ];
 

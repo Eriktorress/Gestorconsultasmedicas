@@ -21,7 +21,7 @@
   
     <ion-list>
   
-      <ion-item-sliding *ngFor="let item of noticias">
+      <ion-item-sliding *ngFor="let item of consultas">
   
         <ion-item>
           <ion-avatar item-start>
@@ -30,12 +30,12 @@
   
           <ion-label>
             <h2>{{ item.titulo }}</h2>
-            <!-- word-wrap para los cortes entre palabras  white-space para que aparezca todo el texto en varias lineas y no se corte-->
+            <p style="word-wrap: break-word; white-space: normal;">{{ item.especialista }}</p>
             <p style="word-wrap: break-word; white-space: normal;">{{ item.texto }}</p>
           </ion-label>
   
         </ion-item>
-        <!-- El error era que el evento click se lo puse al icono y no al boton completo -->
+  
         <ion-item-options side="end">
           <ion-item-option (click)="editar(item)">
             <ion-icon name="create" ></ion-icon> Editar
@@ -49,7 +49,7 @@
     </ion-list>
   
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button [routerLink]="['/agregar']">
+      <ion-fab-button [routerLink]="['/consultas/agregar']">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
       <!--
