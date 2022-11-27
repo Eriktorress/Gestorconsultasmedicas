@@ -10,7 +10,7 @@ import { DbconsultaService } from 'src/app/services/dbconsulta.service';
 })
 export class ConsultasPage {
 
-  noticias: any = [
+  consultas: any = [
     {
       titulo: "Titulo de la Consulta",
       especialista: "Especialistas",
@@ -27,7 +27,7 @@ export class ConsultasPage {
       if(res){
         //this.servicioBD.presentAlert("3");
         this.servicioBD.fetchConsultas().subscribe(item =>{
-          this.noticias = item;
+          this.consultas = item;
         })
       }
       //this.servicioBD.presentAlert("4");

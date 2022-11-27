@@ -53,7 +53,7 @@ export class AppComponent {
       this.dbService.setDatabase(db);
       this.dbService.createTables();
     }) // Si todo sale bien, muestra por consola el log del db
-    .catch(error=>{console.error('sadasd');}); // Si sale algo mal, muestra por consola el error
+    .catch(error=>{console.error('ERROR DE CONSOLA');}); // Si sale algo mal, muestra por consola el error
   }
 }
 

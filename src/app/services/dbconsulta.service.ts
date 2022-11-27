@@ -12,7 +12,7 @@ export class DbconsultaService {
   public database: SQLiteObject;
 
   tablaConsultas: string = "CREATE TABLE IF NOT EXISTS consulta(id INTEGER PRIMARY KEY autoincrement, titulo VARCHAR(50) NOT NULL, especialista VARCHAR(50) NOT NULL, texto TEXT NOT NULL);";
-  registro: string = "INSERT or IGNORE INTO consulta(id, titulo, especialista, texto) VALUES (1, 'Titulo consulta', especialista,'Texto de la consulta que se quiere mostrar');";
+  registro: string = "INSERT or IGNORE INTO consulta(id, titulo, especialista, texto) VALUES (1, 'Titulo consulta', 'especialista','Texto de la consulta que se quiere mostrar');";
   listaConsultas = new BehaviorSubject([]);
 
   private isDbReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
@@ -22,7 +22,7 @@ export class DbconsultaService {
 
    addConsulta(titulo, especialista, texto){
     let data=[titulo,especialista,texto];
-    return this.database.executeSql('INSERT INTO consulta(titulo,especialista,texto) VALUES(?,?)',data)
+    return this.database.executeSql('INSERT INTO consulta(titulo,especialista,texto) VALUES(?,?,?)',data)
     .then(res =>{
       this.buscarConsultas();
     })
@@ -31,7 +31,7 @@ export class DbconsultaService {
 
   updateConsulta(id, titulo, especialista, texto){
     let data = [titulo, especialista,texto, id];
-    return this.database.executeSql('UPDATE consulta SET titulo = ?, especialista = ?, texto = ? WHERE id = ?', data)
+    return this.database.executeSql('UPDATE consulta SET titulo = ?, especialista = ?, texto = ? WHERE id = ?',data)
     .then(data2 =>{
       this.buscarConsultas();
     })
@@ -88,7 +88,7 @@ export class DbconsultaService {
           items.push({
             id: res.rows.item(i).id,
             titulo: res.rows.item(i).titulo,
-            especialista:res.rows.item(i).especialista,
+            especialista: res.rows.item(i).especialista,
             texto: res.rows.item(i).texto
           });
         }
