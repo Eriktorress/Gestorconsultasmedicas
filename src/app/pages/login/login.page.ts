@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
       
     }
     else{
-      this.presentToast("Falta: "+this.field);
+      this.presentToast("Porfavor, ingresa tu "+this.field);
     }
   }
   registrar(){
@@ -131,7 +131,7 @@ export class LoginPage implements OnInit {
   async formulario() {
     const alert = await this.alertcontroler.create({
       header: 'Creación de Usuario',
-      message: 'Mensaje <strong>El usuario no existe, desea registrarse?</strong>',
+      message: '<strong>El usuario no existe, desea registrarse?</strong>',
       buttons: [
         {
           text: 'NO',

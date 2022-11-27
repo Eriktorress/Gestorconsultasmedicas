@@ -39,16 +39,16 @@ S
 
   async salir(){
     const alert = await this.alertcontroler.create({
-      header: 'Salir',
-      message: '¿Deberitas te quieres salir?',
+      header: 'Cerrar Sesión',
+      message: '¿Estas Seguro que deseas cerrar tu sesión?',
       buttons: [
         {
-          text: 'No mejor no',
+          text: 'No, cancelar',
           handler: () => {
 
           }
         }, {
-          text: 'Sii',
+          text: 'Si, aceptar',
           handler: () => {
             this.authenticationService.logout();
           }

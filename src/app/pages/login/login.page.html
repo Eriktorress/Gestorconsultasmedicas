@@ -1,19 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title> Gestor de Consultas Médicas</ion-title>
+    <ion-buttons slot="start">
+      <ion-avatar>
+        <img alt="" src="/assets/images/logo.svg" />
+      </ion-avatar>
+    </ion-buttons>
+
+    <ion-title text-center>Centro Medico Galenos</ion-title>
   </ion-toolbar>
+
+  
 </ion-header>
 
 <ion-content class="ion-padding">
 <ion-img src="/assets/images/login.svg"></ion-img>
 
 <ion-item class="ion-margin-top">
-  <ion-label position="floating"> Usuarios</ion-label>
+  <ion-label position="floating"> Usuario</ion-label>
   <ion-input  [(ngModel)]="login.Usuario"></ion-input>
 </ion-item>
 
 <ion-item class="ion-margin-top">
-  <ion-label position="floating"> contraseña</ion-label>
+  <ion-label position="floating"> Contraseña</ion-label>
   <ion-input type="password" [(ngModel)]="login.Password"></ion-input>
 </ion-item>
 

@@ -1,27 +1,33 @@
-<ion-header [translucent]="false">
+<ion-header>
   <ion-toolbar>
-    <!--titulo -->
-    <ion-title>
-      Bienvenido
-    </ion-title>
-    <!--boton salir -->
-    <ion-buttons slot="primary">
-      <ion-button (click)="salir()" color="danger" fill="outline"> Salir 
-        <ion-icon slot="end" name="log-out-outline">
-        </ion-icon>
-      </ion-button>
+    <!--Boton de perfil -->
+    <ion-buttons slot="start">
+      <ion-avatar>
+        <img alt="" src="/assets/images/logo_3.jpg" />
+      </ion-avatar>
     </ion-buttons>
 
+    <!--boton salir -->
+    <ion-buttons slot="primary">
+      <ion-button (click)="salir()" icon-only> 
+        <ion-icon name="arrow-redo"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+    <!--titulo -->
+    <ion-title text-Center>Bienvenido</ion-title>
   </ion-toolbar>
   <!-- Termina el Header -->
 
+
+  
   <ion-content [fullscreen]="true">
     <ion-header collapse="condense">
       <ion-toolbar>
         <ion-title size="large"></ion-title>
       </ion-toolbar>
     </ion-header>
-  
+
   
     <ion-menu side="start" menuId="first" contentId="main">
       <ion-header>
@@ -42,8 +48,39 @@
         </ion-list>
       </ion-content>
     </ion-menu>
-    <ion-router-outlet id="main"></ion-router-outlet>
-  
-    
+     <ion-router-outlet id="main"></ion-router-outlet>
+
+
+     <!--INICIO TABS -->
+     <ion-tabs>
+      <ion-tab-bar slot="bottom">
+
+        <!-- Calendario -->
+        <ion-tab-button tab="schedule">
+          <ion-icon name="calendar"></ion-icon>
+          <ion-label>Calendario</ion-label>
+        </ion-tab-button>
+        
+        <!-- PERFIL-->
+        <ion-tab-button tab="speakers">
+          <ion-icon name="person-circle"></ion-icon>
+          <ion-label>Perfil</ion-label>
+        </ion-tab-button>
+        
+        <!-- MAPA -->
+        <ion-tab-button tab="map">
+          <ion-icon name="map"></ion-icon>
+          <ion-label>Mapa</ion-label>
+        </ion-tab-button>
+        
+        <!-- ACERCA DE -->
+        <ion-tab-button tab="about">
+          <ion-icon name="information-circle"></ion-icon>
+          <ion-label>Acerca de nosotros</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+    <!--FIN TABS -->
+
   </ion-content>
 
