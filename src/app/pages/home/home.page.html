@@ -10,7 +10,7 @@
     <!--boton salir -->
     <ion-buttons slot="primary">
       <ion-button (click)="salir()" icon-only> 
-        <ion-icon name="arrow-redo"></ion-icon>
+        <ion-icon name="reorder-four-sharp"></ion-icon>
       </ion-button>
     </ion-buttons>
     
@@ -20,7 +20,7 @@
   <!-- Termina el Header -->
 
 
-  
+
   <ion-content [fullscreen]="true">
     <ion-header collapse="condense">
       <ion-toolbar>
@@ -55,18 +55,18 @@
      <ion-tabs>
       <ion-tab-bar slot="bottom">
 
-        <!-- Calendario -->
-        <ion-tab-button tab="schedule">
-          <ion-icon name="calendar"></ion-icon>
-          <ion-label>Calendario</ion-label>
-        </ion-tab-button>
-        
         <!-- PERFIL-->
         <ion-tab-button tab="speakers">
           <ion-icon name="person-circle"></ion-icon>
           <ion-label>Perfil</ion-label>
         </ion-tab-button>
-        
+
+        <!-- Calendario -->
+        <ion-tab-button tab="schedule">
+          <ion-icon name="calendar"></ion-icon>
+          <ion-label>Calendario</ion-label>
+        </ion-tab-button>
+      
         <!-- MAPA -->
         <ion-tab-button tab="map">
           <ion-icon name="map"></ion-icon>
@@ -76,11 +76,12 @@
         <!-- ACERCA DE -->
         <ion-tab-button tab="about">
           <ion-icon name="information-circle"></ion-icon>
-          <ion-label>Acerca de nosotros</ion-label>
+          <ion-label>CMG</ion-label>
         </ion-tab-button>
+        
       </ion-tab-bar>
     </ion-tabs>
     <!--FIN TABS -->
 
   </ion-content>
-
+</ion-header>

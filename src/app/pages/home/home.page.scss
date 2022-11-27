@@ -1,10 +1,14 @@
 
 ion-content {
-    --background: #4694fa;
+    --background: #ecf4ff;
     
   }
 
 ion-toolbar{
-    --background: #0670fc; 
-    --color: #fff;
+    --background: #ffffff; 
+    --color: rgb(0, 0, 0);
+}
+
+ion-avatar{
+  padding: 10px;
 }
