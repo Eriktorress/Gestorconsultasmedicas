@@ -13,11 +13,11 @@ export class AgregarPage implements OnInit {
   especialistaConsulta= "";
   textoConsulta= "";
 
-  constructor(private dbservice: DbconsultaService, private router: Router) { }
+  constructor(private dbconsulta: DbconsultaService, private router: Router) { }
 
   guardar() {
-    this.dbservice.addConsulta(this.tituloConsulta,this.especialistaConsulta,this.textoConsulta);
-    this.dbservice.presentToast("Consulta Agregada");
+    this.dbconsulta.addConsulta(this.tituloConsulta,this.especialistaConsulta,this.textoConsulta);
+    this.dbconsulta.presentToast("Consulta Agregada");
     this.router.navigate(['/consultas']);
   }
 

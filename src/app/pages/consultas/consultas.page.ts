@@ -55,7 +55,7 @@ export class ConsultasPage {
       }
     }
     this.servicioBD.presentToast("Aqui");
-    this.router.navigate(['/modificar'],navigationextras);
+    this.router.navigate(['./consultas/modificar'],navigationextras);
 
   }
 

@@ -14,20 +14,20 @@ export class ModificarPage implements OnInit {
   especialistaConsulta = "";
   textoConsulta = "";
 
-  constructor(private router:Router, private activedroute: ActivatedRoute, private dbservice: DbconsultaService) {
+  constructor(private router:Router, private activedroute: ActivatedRoute, private dbconsulta: DbconsultaService) {
     this.activedroute.queryParams.subscribe(param =>{
       if(this.router.getCurrentNavigation().extras.state){
         this.idConsulta = this.router.getCurrentNavigation().extras.state.idEnviado;
         this.tituloConsulta = this.router.getCurrentNavigation().extras.state.tituloEnviado;
-        this.especialistaConsulta = this.router.getCurrentNavigation().extras.state.tituloEnviado;
+        this.especialistaConsulta = this.router.getCurrentNavigation().extras.state.especialistaEnviado;
         this.textoConsulta = this.router.getCurrentNavigation().extras.state.textoEnviado;
       }
     })
   }
 
   editar(){
-    this.dbservice.updateConsulta(this.idConsulta, this.tituloConsulta,this.especialistaConsulta,this.textoConsulta);
-    this.dbservice.presentToast("Noticia Modificada");
+    this.dbconsulta.updateConsulta(this.idConsulta, this.tituloConsulta,this.especialistaConsulta,this.textoConsulta);
+    this.dbconsulta.presentToast("Consulta Modificada");
     this.router.navigate(['/consultas']);
   }
 
