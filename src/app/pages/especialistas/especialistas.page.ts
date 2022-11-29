@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-especialistas',
@@ -6,8 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./especialistas.page.scss'],
 })
 export class EspecialistasPage implements OnInit {
+  getPosts:any[]=[];
 
-  constructor() { }
+  constructor( public _services:ApiService) {
+
+    this._services.getPosts().subscribe(data => {
+      this.getPosts = data
+      console.log(this.getPosts);
+    }
+      )
+   }
 
   ngOnInit() {
   }
