@@ -5,8 +5,8 @@ import { DbService } from './services/db.service';
 const routes: Routes = [
 
   {
-    path: '',
-    redirectTo: 'login',
+    path: 'login',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
