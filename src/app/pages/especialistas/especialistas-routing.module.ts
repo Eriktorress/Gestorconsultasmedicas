@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: EspecialistasPage
+  },
+  {
+    path: 'info/:id',
+    loadChildren: () => import('./info/info.module').then( m => m.InfoPageModule)
   }
 ];
 
