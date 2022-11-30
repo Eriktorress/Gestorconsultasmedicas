@@ -6,28 +6,28 @@ import { HomePage } from './home.page';
 const routes: Routes = [
   {
     path: '',
-    component: HomePage
+    component: HomePage,
+    children:[
+      {
+        path: 'perfil',
+        loadChildren: () => import('./../../pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+      },
+      {
+        path: 'maps',
+        loadChildren: () => import('./../../pages/maps/maps.module').then( m => m.MapsPageModule)
+      },
+      {
+        path: 'horas',
+        loadChildren: () => import('./../../pages/horas/horas.module').then( m => m.HorasPageModule)
+      },
+      {
+        path: 'cmg',
+        loadChildren: () => import('./../../pages/cmg/cmg.module').then( m => m.CmgPageModule)
+      },
+    ]
+    
   },
-  {
-    path: 'cmgs',
-    loadChildren: () => import('./cmgs/cmgs.module').then( m => m.CmgsPageModule)
-  },
-  {
-    path: 'perf',
-    loadChildren: () => import('./perf/perf.module').then( m => m.PerfPageModule)
-  },
-  {
-    path: 'cal',
-    loadChildren: () => import('./cal/cal.module').then( m => m.CalPageModule)
-  },
-  {
-    path: 'mapa',
-    loadChildren: () => import('./mapa/mapa.module').then( m => m.MapaPageModule)
-  },
-  {
-    path: 'tab',
-    loadChildren: () => import('./tab/tab.module').then( m => m.TabPageModule)
-  }
+  
 
 ];
 
