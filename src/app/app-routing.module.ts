@@ -34,11 +34,6 @@ const routes: Routes = [
     redirectTo: 'house',
     pathMatch: 'full'
   },
- // {
-    // path: '**',
- //   redirectTo: 'e404',
- //   pathMatch: 'full'
- // },
 
   {
     path: 'home',
@@ -61,13 +56,12 @@ const routes: Routes = [
     path: 'consultas',
     loadChildren: () => import('./pages/consultas/consultas.module').then( m => m.ConsultasPageModule)
   },
+  {
+    path: '**',
+    redirectTo: 'e404',
+    pathMatch: 'full'
+ },
   
-  
-  
-  
-
-  
-
 
 ];
 
