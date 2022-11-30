@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-
-MAPBOX_KEY: 'YOUR_MAPBOX_ACCESS_TOKEN'
+  google_maps_api_key: 'AIzaSyBOF_DbZZGOOAcp_kZYjiT5B9-OyF6e6bs'
 };
 
 /*
