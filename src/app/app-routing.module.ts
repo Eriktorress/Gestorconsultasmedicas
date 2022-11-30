@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { DbService } from './services/db.service';
+import { AutService } from './services/aut.service';
 
 const routes: Routes = [
 
@@ -10,8 +10,40 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'login',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'consultas',
+    redirectTo: 'consultas',
+    pathMatch: 'full'
+  },
+  {
+    path: 'especialistas',
+    redirectTo: 'especialistas',
+    pathMatch: 'full'
+  },
+  {
+    path: 'house',
+    redirectTo: 'house',
+    pathMatch: 'full'
+  },
+ // {
+    // path: '**',
+ //   redirectTo: 'e404',
+ //   pathMatch: 'full'
+ // },
+
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    canActivate:[AutService]
   },
   {
     path: 'login',
