@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PerfPageRoutingModule } from './perf-routing.module';
+import { CmgPageRoutingModule } from './cmg-routing.module';
 
-import { PerfPage } from './perf.page';
+import { CmgPage } from './cmg.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PerfPageRoutingModule
+    CmgPageRoutingModule
   ],
-  declarations: [PerfPage]
+  declarations: [CmgPage]
 })
-export class PerfPageModule {}
+export class CmgPageModule {}
