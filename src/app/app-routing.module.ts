@@ -30,6 +30,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/consultas/consultas.module').then( m => m.ConsultasPageModule)
   },
   
+  
+  
+  
+
+  
 
 
 ];

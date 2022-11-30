@@ -30,7 +30,7 @@ S
   }
  
   ionViewWillEnter(){
-    this.router.navigate(['home/perfil']);
+    this.router.navigate(['home/house']);    /* DONDE SE DIRIGE LUEGO DE ENTRAR AL HOME (en este caso lo dirigimos al home/ house)*/
   }
  
   logout(){

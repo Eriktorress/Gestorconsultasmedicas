@@ -1,14 +1,14 @@
 <ion-header>
   <ion-toolbar>
     <!--Boton de perfil -->
-    <ion-buttons slot="start">
+    <ion-buttons slot="primary">
       <ion-avatar>
         <img alt="" src="/assets/images/logo_3.jpg" />
       </ion-avatar>
     </ion-buttons>
 
     <!--boton salir -->
-    <ion-buttons slot="primary">
+    <ion-buttons slot="start">
       <ion-button (click)="salir()" icon-only> 
         <ion-icon name="reorder-four-sharp"></ion-icon>
       </ion-button>
@@ -55,6 +55,12 @@
      <ion-tabs>
       <ion-tab-bar slot="bottom">
 
+        <!-- Home-->
+        <ion-tab-button tab="house">
+          <ion-icon name="home-sharp"></ion-icon>
+          <ion-label>Home</ion-label>
+        </ion-tab-button>
+
         <!-- PERFIL-->
         <ion-tab-button tab="perfil">
           <ion-icon name="person-circle"></ion-icon>
@@ -73,11 +79,6 @@
           <ion-label>Mapa</ion-label>
         </ion-tab-button>
         
-        <!-- ACERCA DE -->
-        <ion-tab-button tab="cmg">
-          <ion-icon name="information-circle"></ion-icon>
-          <ion-label>CMG</ion-label>
-        </ion-tab-button>
         
       </ion-tab-bar>
     </ion-tabs>
