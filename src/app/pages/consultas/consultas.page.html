@@ -24,8 +24,8 @@
       <ion-item-sliding *ngFor="let item of consultas">
   
         <ion-item>
-          <ion-avatar item-start>
-            <img src="../assets/icon/favicon.png">
+          <ion-avatar slot="start" >
+            <img src="../assets/icon/icon-doctor.jpg">
           </ion-avatar>
   
           <ion-label>
@@ -33,7 +33,6 @@
             <p style="word-wrap: break-word; white-space: normal;">{{ item.especialista }}</p>
             <p style="word-wrap: break-word; white-space: normal;">{{ item.texto }}</p>
           </ion-label>
-  
         </ion-item>
   
         <ion-item-options side="end">
