@@ -1,20 +1,38 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
     <ion-title>especialistas</ion-title>
   </ion-toolbar>
 </ion-header>
+
+
+
 
 <ion-content>
   <div *ngIf="listado.length > 0">
 
     <ion-list>
-      <div *ngFor="let aux of listado" [routerLink]="['/especialistas/info/', aux.id]">
+
+      <ion-item-sliding *ngFor="let aux of listado" [routerLink]="['/especialistas/info/', aux.id]">
+
         <ion-item>
-          <ion-label> {{aux.name}} </ion-label>
-          <ion-label> {{aux.username}} </ion-label>
+          <ion-avatar slot="start">
+            <img alt="Silhouette of a person's head" src="https://es.web.img2.acsta.net/c_162_216/pictures/19/06/22/13/38/1944794.jpg"/>
+          </ion-avatar>
+
+          <ion-label>
+            <p style="word-wrap: break-word; white-space: normal;">{{aux.name}}</p>
+            <p style="word-wrap: break-word; white-space: normal;">{{aux.username}}</p>
+          </ion-label>
         </ion-item>
-      </div>
+
+      </ion-item-sliding>
+
     </ion-list>
   </div>
-
+  
 </ion-content>
+
+

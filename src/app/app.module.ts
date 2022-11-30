@@ -17,6 +17,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { HttpClientModule } from '@angular/common/http'
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { HttpClientModule } from '@angular/common/http'
     IonicStorageModule.forRoot()
   ],
   providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     StatusBar,
     SplashScreen,
     SQLite,

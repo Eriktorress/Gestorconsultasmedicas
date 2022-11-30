@@ -8,22 +8,23 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="datos !=null">
-    <ion-row>
-      <ion-col size="3">id</ion-col>
-      <ion-col size="9">{{datos.id}} </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="3">nombre</ion-col>
-      <ion-col size="9">{{datos.name}}</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="3">user.name</ion-col>
-      <ion-col size="9">{{datos.username}}</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="3">email</ion-col>
-      <ion-col size="9">{{datos.email}}</ion-col>
-    </ion-row>
-  </div>
+  <ion-card>
+    <div *ngIf="datos !=null">
+  
+      <img alt="Silhouette of mountains" src="https://es.web.img2.acsta.net/c_162_216/pictures/19/06/22/13/38/1944794.jpg" />
+      <ion-card-header>
+        <ion-card-title>{{datos.name}}</ion-card-title>
+        <ion-card-subtitle>{{datos.username}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <p style="word-wrap: break-word; white-space: normal;">Correo: {{datos.email}}</p>
+        <p style="word-wrap: break-word; white-space: normal;">Contacto: {{datos.phone}}</p>
+        <p style="word-wrap: break-word; white-space: normal;">Pagina web: {{datos.website}}</p>  
+      </ion-card-content>
+  
+   </div>
+  </ion-card>
+  
 </ion-content>
+
