@@ -7,18 +7,16 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./especialistas.page.scss'],
 })
 export class EspecialistasPage implements OnInit {
-  getPosts:any[]=[];
-
-  constructor( public _services:ApiService) {
-
-    this._services.getPosts().subscribe(data => {
-      this.getPosts = data
-      console.log(this.getPosts);
-    }
-      )
-   }
+  listado = [];
+  constructor( public api:ApiService) {}
 
   ngOnInit() {
+    this.listar();
+  }
+  listar()
+  {
+    this.api.getUsers();
+    this.listado = this.api.listado;
   }
 
 }
