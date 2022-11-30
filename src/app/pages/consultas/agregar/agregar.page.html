@@ -5,33 +5,39 @@
 </ion-header>
 
 <ion-content>
-<div class="ion-padding-vertical">
-  <ion-card class="ion-text-center">
-    <ion-card-title>
-      <ion-label>
-        <h1>Datos Consulta</h1>
-      </ion-label>
-    </ion-card-title>
+  <div class="ion-padding-vertical">
+    <ion-card class="ion-text-center">
+      <ion-card-title>
+        <ion-label>
+          <h1>Datos Consulta</h1>
+        </ion-label>
+      </ion-card-title>
 
-    <ion-card-content>
-      <ion-item>
-        <ion-label position="floating">Titulo</ion-label>
-        <ion-input type="text" [(ngModel)]="tituloConsulta"></ion-input>
-      </ion-item>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Titulo</ion-label>
+          <ion-input type="text" [(ngModel)]="tituloConsulta"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Especialista</ion-label>
-        <ion-input type="text" [(ngModel)]="especialistaConsulta"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-item>
+            <ion-label position="floating">Selecciona Especialista</ion-label>
+            <ion-select [(ngModel)]="especialistaConsulta" (ionChange)="onSelectChange($event)" >
+              <ion-select-option  *ngFor="let aux of listado" [value]="aux['name']">
+                {{aux.name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">Texto</ion-label>
-        <ion-input type="text" [(ngModel)]="textoConsulta"></ion-input>
-      </ion-item>
-    </ion-card-content>
-    <ion-button shape="block" (click)="guardar()">Guardar Consulta</ion-button>
-  </ion-card>
-
-</div>
+        <ion-item>
+          <ion-label position="floating">Texto</ion-label>
+          <ion-input type="text" [(ngModel)]="textoConsulta"></ion-input>
+        </ion-item>
+      </ion-card-content>
+      <ion-button shape="block" (click)="guardar()">Guardar Consulta</ion-button>
+    </ion-card>
+  <!-- <ion-input type="text" [(ngModel)]="especialistaConsulta"></ion-input> -->
+  </div>
 
 </ion-content>

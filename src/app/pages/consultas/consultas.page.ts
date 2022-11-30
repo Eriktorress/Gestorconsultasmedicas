@@ -45,7 +45,6 @@ export class ConsultasPage {
   }
 
   editar(item) {
-    this.servicioBD.presentToast("Listo");
     let navigationextras: NavigationExtras = {
       state : {
         idEnviado : item.id,
@@ -54,7 +53,6 @@ export class ConsultasPage {
         textoEnviado : item.texto
       }
     }
-    this.servicioBD.presentToast("Aqui");
     this.router.navigate(['./consultas/modificar'],navigationextras);
 
   }
@@ -64,4 +62,5 @@ export class ConsultasPage {
     this.servicioBD.presentToast("Consulta Eliminada");
   }
 
+  
 }

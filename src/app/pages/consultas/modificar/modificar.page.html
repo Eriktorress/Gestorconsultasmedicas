@@ -20,8 +20,14 @@
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">Especialista</ion-label>
-          <ion-input type="text" [(ngModel)]="especialistaConsulta"></ion-input>
+          <ion-item>
+            <ion-label position="floating">Selecciona Especialista</ion-label>
+            <ion-select [(ngModel)]="especialistaConsulta" (ionChange)="onSelectChange($event)" >
+              <ion-select-option  *ngFor="let aux of listado" [value]="aux['name']">
+                {{aux.name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
         </ion-item>
 
         <ion-item>

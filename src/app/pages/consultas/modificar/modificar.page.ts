@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 import { DbconsultaService } from 'src/app/services/dbconsulta.service';
 
 @Component({
@@ -13,8 +14,9 @@ export class ModificarPage implements OnInit {
   tituloConsulta = "";
   especialistaConsulta = "";
   textoConsulta = "";
+  listado = [];
 
-  constructor(private router:Router, private activedroute: ActivatedRoute, private dbconsulta: DbconsultaService) {
+  constructor(private router:Router, private activedroute: ActivatedRoute, private dbconsulta: DbconsultaService,public api:ApiService) {
     this.activedroute.queryParams.subscribe(param =>{
       if(this.router.getCurrentNavigation().extras.state){
         this.idConsulta = this.router.getCurrentNavigation().extras.state.idEnviado;
@@ -32,6 +34,21 @@ export class ModificarPage implements OnInit {
   }
 
   ngOnInit() {
+    this.listar();
+  }
+  listar()
+  {
+    this.api.getUsers();
+    this.listado = this.api.listado;
   }
 
+  onSelectChange(selectedValue: any) {
+    //Selected Value Id will get as param ==> selectedValue
+    //Selected Object
+    var item = this.listado.find(item => item['name'] === selectedValue);
+    //Position of object in array
+    var postion = this.listado.findIndex(item => item['name'] === selectedValue);
+  }
 }
+
+
