@@ -1,7 +1,7 @@
 {
   "name": "gestorconsultasmedicas",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
+  "version": "0.0.2",
+  "author": "Iluminati",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
