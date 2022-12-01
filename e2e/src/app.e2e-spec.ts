@@ -7,8 +7,14 @@ describe('new App', () => {
     page = new AppPage();
   });
 
-  it('should be blank', () => {
+  it('Debe estar en blanco ', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toContain('Start with Ionic UI Components');
   });
+
+  it('Deberia mostrar un mensaje de bienvenida', () => {
+    page.navigateTo();
+    expect(page.getPageTitle()).toContain('Bienvenido');
+  });
+
 });
