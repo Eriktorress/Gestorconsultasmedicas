@@ -8,4 +8,7 @@ export class AppPage {
   getParagraphText() {
     return element(by.deepCss('app-root ion-content')).getText();
   }
+  getPageTitle() {
+    return element(by.css('ion-title')).getText();
+  }
 }
