@@ -1,6 +1,67 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["common"],{
 
+/***/ 5830:
+/*!*****************************************!*\
+  !*** ./src/app/services/api.service.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ApiService": () => (/* binding */ ApiService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 8784);
+
+
+
+let ApiService = class ApiService {
+    constructor(HttpClient) {
+        this.HttpClient = HttpClient;
+        this.listado = [];
+        this.urlApi = 'https://jsonplaceholder.typicode.com/';
+    }
+    getUsers() {
+        let url = this.urlApi + "users";
+        this.listado = [];
+        return new Promise((resolve, reject) => {
+            this.HttpClient.get(url).subscribe((data) => {
+                resolve(data);
+                data.forEach(item => { this.listado.push(item); });
+            }, error => {
+                console.log("Error en la comunicación del server");
+            });
+        });
+    }
+    getUser(id) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__awaiter)(this, void 0, void 0, function* () {
+            let url = this.urlApi + "users/" + id;
+            return new Promise((resolve, reject) => {
+                this.HttpClient.get(url).subscribe((data) => {
+                    resolve(data);
+                    this.item = data;
+                }, error => {
+                    console.log("Error en la comunicación del server");
+                });
+            });
+        });
+    }
+};
+ApiService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
+];
+ApiService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable)({
+        providedIn: 'root'
+    })
+], ApiService);
+
+
+
+/***/ }),
+
 /***/ 2943:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/button-active-8251f533.js ***!

@@ -22,28 +22,26 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
-        component: _home_page__WEBPACK_IMPORTED_MODULE_0__.HomePage
+        component: _home_page__WEBPACK_IMPORTED_MODULE_0__.HomePage,
+        children: [
+            {
+                path: 'house',
+                loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_house_house_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./../../pages/house/house.module */ 7179)).then(m => m.HousePageModule)
+            },
+            {
+                path: 'perfil',
+                loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_perfil_perfil_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./../../pages/perfil/perfil.module */ 6217)).then(m => m.PerfilPageModule)
+            },
+            {
+                path: 'horas',
+                loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_horas_horas_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./../../pages/horas/horas.module */ 2936)).then(m => m.HorasPageModule)
+            },
+            {
+                path: 'maps',
+                loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_maps_maps_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./../../pages/maps/maps.module */ 5177)).then(m => m.MapsPageModule)
+            },
+        ]
     },
-    {
-        path: 'cmgs',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_home_cmgs_cmgs_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./cmgs/cmgs.module */ 5416)).then(m => m.CmgsPageModule)
-    },
-    {
-        path: 'perf',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_home_perf_perf_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./perf/perf.module */ 9167)).then(m => m.PerfPageModule)
-    },
-    {
-        path: 'cal',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_home_cal_cal_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./cal/cal.module */ 7260)).then(m => m.CalPageModule)
-    },
-    {
-        path: 'mapa',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_home_mapa_mapa_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./mapa/mapa.module */ 1878)).then(m => m.MapaPageModule)
-    },
-    {
-        path: 'tab',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_home_tab_tab_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./tab/tab.module */ 2896)).then(m => m.TabPageModule)
-    }
 ];
 let HomePageRoutingModule = class HomePageRoutingModule {
 };
@@ -144,7 +142,7 @@ let HomePage = class HomePage {
         this.router.navigate(['home/' + direction]);
     }
     ionViewWillEnter() {
-        this.router.navigate(['home/perfil']);
+        this.router.navigate(['home/house']); /* DONDE SE DIRIGE LUEGO DE ENTRAR AL HOME (en este caso lo dirigimos al home/ house)*/
     }
     logout() {
         this.authenticationService.logout();
@@ -205,7 +203,7 @@ module.exports = "ion-content {\n  --background: #ecf4ff;\n}\n\nion-toolbar {\n 
   \******************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <!--Boton de perfil -->\r\n    <ion-buttons slot=\"start\">\r\n      <ion-avatar>\r\n        <img alt=\"\" src=\"/assets/images/logo_3.jpg\" />\r\n      </ion-avatar>\r\n    </ion-buttons>\r\n\r\n    <!--boton salir -->\r\n    <ion-buttons slot=\"primary\">\r\n      <ion-button (click)=\"salir()\" icon-only> \r\n        <ion-icon name=\"reorder-four-sharp\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n    \r\n    <!--titulo -->\r\n    <ion-title text-Center>Bienvenido</ion-title>\r\n  </ion-toolbar>\r\n  <!-- Termina el Header -->\r\n\r\n\r\n\r\n  <ion-content [fullscreen]=\"true\">\r\n    <ion-header collapse=\"condense\">\r\n      <ion-toolbar>\r\n        <ion-title size=\"large\"></ion-title>\r\n      </ion-toolbar>\r\n    </ion-header>\r\n\r\n  \r\n    <ion-menu side=\"start\" menuId=\"first\" contentId=\"main\">\r\n      <ion-header>\r\n        <ion-toolbar color=\"primary\">\r\n          <ion-title>Start Menu</ion-title>\r\n        </ion-toolbar>\r\n      </ion-header>\r\n      <ion-content>\r\n        <ion-list>\r\n          <ion-item><ion-icon name=\"person-circle-outline\" slot=\"start\"></ion-icon>Perfil </ion-item>\r\n          <ion-item><ion-icon name=\"fitness-outline\" slot=\"start\"></ion-icon> Mi estado </ion-item>\r\n          <ion-item [routerLink]=\"['/consultas']\"><ion-icon name=\"calendar-number-outline\"  slot=\"start\"></ion-icon> Mis consultas </ion-item>\r\n          <ion-item><ion-icon name=\"bag-add-outline\" slot=\"start\"></ion-icon> Historial de atenciones </ion-item>\r\n          <ion-item [routerLink]=\"['/especialistas']\"><ion-icon name=\"glasses-outline\" slot=\"start\"></ion-icon> Especialistas </ion-item>\r\n          <ion-item><ion-icon name=\"notifications-outline\" slot=\"start\"></ion-icon> Notificaciones </ion-item>\r\n          <ion-item [routerLink]=\"['/home/mapa']\"><ion-icon name=\"map-outline\" slot=\"start\"></ion-icon> Geocalización </ion-item>\r\n  \r\n        </ion-list>\r\n      </ion-content>\r\n    </ion-menu>\r\n     <ion-router-outlet id=\"main\"></ion-router-outlet>\r\n\r\n\r\n     <!--INICIO TABS -->\r\n     <ion-tabs>\r\n      <ion-tab-bar slot=\"bottom\">\r\n\r\n        <!-- PERFIL-->\r\n        <ion-tab-button tab=\"speakers\">\r\n          <ion-icon name=\"person-circle\"></ion-icon>\r\n          <ion-label>Perfil</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <!-- Calendario -->\r\n        <ion-tab-button tab=\"schedule\">\r\n          <ion-icon name=\"calendar\"></ion-icon>\r\n          <ion-label>Calendario</ion-label>\r\n        </ion-tab-button>\r\n      \r\n        <!-- MAPA -->\r\n        <ion-tab-button tab=\"map\">\r\n          <ion-icon name=\"map\"></ion-icon>\r\n          <ion-label>Mapa</ion-label>\r\n        </ion-tab-button>\r\n        \r\n        <!-- ACERCA DE -->\r\n        <ion-tab-button tab=\"about\">\r\n          <ion-icon name=\"information-circle\"></ion-icon>\r\n          <ion-label>CMG</ion-label>\r\n        </ion-tab-button>\r\n        \r\n      </ion-tab-bar>\r\n    </ion-tabs>\r\n    <!--FIN TABS -->\r\n\r\n  </ion-content>\r\n</ion-header>\r\n";
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <!--Boton de perfil -->\r\n    <ion-buttons slot=\"primary\">\r\n      <ion-avatar>\r\n        <img alt=\"\" src=\"/assets/images/logo_3.jpg\" />\r\n      </ion-avatar>\r\n    </ion-buttons>\r\n\r\n    <!--boton salir -->\r\n    <ion-buttons slot=\"start\">\r\n      <ion-button (click)=\"salir()\" icon-only> \r\n        <ion-icon name=\"reorder-four-sharp\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n    \r\n    <!--titulo -->\r\n    <ion-title text-Center>Bienvenido</ion-title>\r\n  </ion-toolbar>\r\n  <!-- Termina el Header -->\r\n\r\n\r\n\r\n  <ion-content [fullscreen]=\"true\">\r\n    <ion-header collapse=\"condense\">\r\n      <ion-toolbar>\r\n        <ion-title size=\"large\"></ion-title>\r\n      </ion-toolbar>\r\n    </ion-header>\r\n\r\n  \r\n    <ion-menu side=\"start\" menuId=\"first\" contentId=\"main\">\r\n      <ion-header>\r\n        <ion-toolbar color=\"primary\">\r\n          <ion-title>Start Menu</ion-title>\r\n        </ion-toolbar>\r\n      </ion-header>\r\n      <ion-content>\r\n        <ion-list>\r\n          <ion-item><ion-icon name=\"person-circle-outline\" slot=\"start\"></ion-icon>Perfil </ion-item>\r\n          <ion-item><ion-icon name=\"fitness-outline\" slot=\"start\"></ion-icon> Mi estado </ion-item>\r\n          <ion-item [routerLink]=\"['/consultas']\"><ion-icon name=\"calendar-number-outline\"  slot=\"start\"></ion-icon> Mis consultas </ion-item>\r\n          <ion-item><ion-icon name=\"bag-add-outline\" slot=\"start\"></ion-icon> Historial de atenciones </ion-item>\r\n          <ion-item [routerLink]=\"['/especialistas']\"><ion-icon name=\"glasses-outline\" slot=\"start\"></ion-icon> Especialistas </ion-item>\r\n          <ion-item><ion-icon name=\"notifications-outline\" slot=\"start\"></ion-icon> Notificaciones </ion-item>\r\n          <ion-item [routerLink]=\"['/home/mapa']\"><ion-icon name=\"map-outline\" slot=\"start\"></ion-icon> Geocalización </ion-item>\r\n  \r\n        </ion-list>\r\n      </ion-content>\r\n    </ion-menu>\r\n     <ion-router-outlet id=\"main\"></ion-router-outlet>\r\n\r\n\r\n     <!--INICIO TABS -->\r\n     <ion-tabs>\r\n      <ion-tab-bar slot=\"bottom\">\r\n\r\n        <!-- Home-->\r\n        <ion-tab-button tab=\"house\">\r\n          <ion-icon name=\"home-sharp\"></ion-icon>\r\n          <ion-label>Home</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <!-- PERFIL-->\r\n        <ion-tab-button tab=\"perfil\">\r\n          <ion-icon name=\"person-circle\"></ion-icon>\r\n          <ion-label>Perfil</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <!-- Calendario -->\r\n        <ion-tab-button tab=\"horas\">\r\n          <ion-icon name=\"calendar\"></ion-icon>\r\n          <ion-label>Calendario</ion-label>\r\n        </ion-tab-button>\r\n      \r\n        <!-- MAPA -->\r\n        <ion-tab-button tab=\"maps\">\r\n          <ion-icon name=\"map\"></ion-icon>\r\n          <ion-label>Mapa</ion-label>\r\n        </ion-tab-button>\r\n        \r\n        \r\n      </ion-tab-bar>\r\n    </ion-tabs>\r\n    <!--FIN TABS -->\r\n\r\n  </ion-content>\r\n</ion-header>\r\n";
 
 /***/ })
 

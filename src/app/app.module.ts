@@ -15,6 +15,7 @@ import { AutenthicationService } from './services/autenthication.service';
 
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Camera, CameraResultType } from '@capacitor/camera';
 
 import { HttpClientModule } from '@angular/common/http'
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';

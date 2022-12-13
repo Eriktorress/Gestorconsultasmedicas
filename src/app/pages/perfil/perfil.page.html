@@ -5,5 +5,12 @@
 </ion-header>
 
 <ion-content>
-<p>INGRESAR EL PERFIL DE LA PERSONA</p>
+  <ion-avatar slot="start">
+    <img src ="selectedImage?.webPath" />
+  </ion-avatar>
+
+
+  <img [src]="selectedImage?.webPath" />
+  <ion-button expand="block" class="ion-margin" (click)="getPicture()"> TAKE</ion-button>
+
 </ion-content>

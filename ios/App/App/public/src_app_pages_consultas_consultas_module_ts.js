@@ -26,11 +26,11 @@ const routes = [
     },
     {
         path: 'modificar',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_consultas_modificar_modificar_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./modificar/modificar.module */ 302)).then(m => m.ModificarPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_consultas_modificar_modificar_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modificar/modificar.module */ 302)).then(m => m.ModificarPageModule)
     },
     {
         path: 'agregar',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_consultas_agregar_agregar_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./agregar/agregar.module */ 8736)).then(m => m.AgregarPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_consultas_agregar_agregar_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./agregar/agregar.module */ 8736)).then(m => m.AgregarPageModule)
     }
 ];
 let ConsultasPageRoutingModule = class ConsultasPageRoutingModule {
@@ -142,7 +142,6 @@ let ConsultasPage = class ConsultasPage {
     agregar() {
     }
     editar(item) {
-        this.servicioBD.presentToast("Listo");
         let navigationextras = {
             state: {
                 idEnviado: item.id,
@@ -151,7 +150,6 @@ let ConsultasPage = class ConsultasPage {
                 textoEnviado: item.texto
             }
         };
-        this.servicioBD.presentToast("Aqui");
         this.router.navigate(['./consultas/modificar'], navigationextras);
     }
     eliminar(item) {
@@ -321,7 +319,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
   \****************************************************************/
 /***/ ((module) => {
 
-module.exports = "\r\n<ion-header [translucent]=\"true\">\r\n    <ion-toolbar>\r\n      <ion-title>\r\n       Consultas\r\n      </ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n    \r\n  <ion-content [fullscreen]=\"true\">\r\n    <ion-header collapse=\"condense\">\r\n      <ion-toolbar>\r\n        <ion-title size=\"large\">Consultas</ion-title>\r\n      </ion-toolbar>\r\n    </ion-header>\r\n  \r\n    <br>\r\n    <h1>Listado de Elementos</h1>\r\n  \r\n    <ion-searchbar (ionInput)=\"getItem($event)\"></ion-searchbar>\r\n  \r\n    <ion-list>\r\n  \r\n      <ion-item-sliding *ngFor=\"let item of consultas\">\r\n  \r\n        <ion-item>\r\n          <ion-avatar item-start>\r\n            <img src=\"../assets/icon/favicon.png\">\r\n          </ion-avatar>\r\n  \r\n          <ion-label>\r\n            <h2>{{ item.titulo }}</h2>\r\n            <p style=\"word-wrap: break-word; white-space: normal;\">{{ item.especialista }}</p>\r\n            <p style=\"word-wrap: break-word; white-space: normal;\">{{ item.texto }}</p>\r\n          </ion-label>\r\n  \r\n        </ion-item>\r\n  \r\n        <ion-item-options side=\"end\">\r\n          <ion-item-option (click)=\"editar(item)\">\r\n            <ion-icon name=\"create\" ></ion-icon> Editar\r\n          </ion-item-option>\r\n          <ion-item-option color=\"danger\" (click)=\"eliminar(item)\">\r\n            <ion-icon name=\"trash\"></ion-icon> Eliminar\r\n          </ion-item-option>\r\n        </ion-item-options>\r\n      </ion-item-sliding>\r\n  \r\n    </ion-list>\r\n  \r\n    <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n      <ion-fab-button [routerLink]=\"['/consultas/agregar']\">\r\n        <ion-icon name=\"add\"></ion-icon>\r\n      </ion-fab-button>\r\n      <!--\r\n  <ion-fab-list side=\"top\">\r\n        <ion-fab-button><ion-icon name=\"logo-vimeo\"></ion-icon></ion-fab-button>\r\n        <ion-fab-button><ion-icon name=\"logo-vimeo\"></ion-icon></ion-fab-button>\r\n      </ion-fab-list>\r\n  \r\n      -->\r\n  \r\n    </ion-fab>\r\n  \r\n  </ion-content>\r\n  ";
+module.exports = "\r\n<ion-header [translucent]=\"true\">\r\n    <ion-toolbar>\r\n      <ion-title>\r\n       Consultas\r\n      </ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n    \r\n  <ion-content [fullscreen]=\"true\">\r\n    <ion-header collapse=\"condense\">\r\n      <ion-toolbar>\r\n        <ion-title size=\"large\">Consultas</ion-title>\r\n      </ion-toolbar>\r\n    </ion-header>\r\n  \r\n    <br>\r\n    <h1>Listado de Elementos</h1>\r\n  \r\n    <ion-searchbar (ionInput)=\"getItem($event)\"></ion-searchbar>\r\n  \r\n    <ion-list>\r\n  \r\n      <ion-item-sliding *ngFor=\"let item of consultas\">\r\n  \r\n        <ion-item>\r\n          <ion-avatar slot=\"start\" >\r\n            <img src=\"../assets/icon/icon-doctor.jpg\">\r\n          </ion-avatar>\r\n  \r\n          <ion-label>\r\n            <h2>{{ item.titulo }}</h2>\r\n            <p style=\"word-wrap: break-word; white-space: normal;\">{{ item.especialista }}</p>\r\n            <p style=\"word-wrap: break-word; white-space: normal;\">{{ item.texto }}</p>\r\n          </ion-label>\r\n        </ion-item>\r\n  \r\n        <ion-item-options side=\"end\">\r\n          <ion-item-option (click)=\"editar(item)\">\r\n            <ion-icon name=\"create\" ></ion-icon> Editar\r\n          </ion-item-option>\r\n          <ion-item-option color=\"danger\" (click)=\"eliminar(item)\">\r\n            <ion-icon name=\"trash\"></ion-icon> Eliminar\r\n          </ion-item-option>\r\n        </ion-item-options>\r\n      </ion-item-sliding>\r\n  \r\n    </ion-list>\r\n  \r\n    <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n      <ion-fab-button [routerLink]=\"['/consultas/agregar']\">\r\n        <ion-icon name=\"add\"></ion-icon>\r\n      </ion-fab-button>\r\n      <!--\r\n  <ion-fab-list side=\"top\">\r\n        <ion-fab-button><ion-icon name=\"logo-vimeo\"></ion-icon></ion-fab-button>\r\n        <ion-fab-button><ion-icon name=\"logo-vimeo\"></ion-icon></ion-fab-button>\r\n      </ion-fab-list>\r\n  \r\n      -->\r\n  \r\n    </ion-fab>\r\n  \r\n  </ion-content>\r\n  ";
 
 /***/ })
 

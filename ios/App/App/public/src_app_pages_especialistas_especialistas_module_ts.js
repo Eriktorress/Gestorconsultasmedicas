@@ -23,6 +23,10 @@ const routes = [
     {
         path: '',
         component: _especialistas_page__WEBPACK_IMPORTED_MODULE_0__.EspecialistasPage
+    },
+    {
+        path: 'info/:id',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_especialistas_info_info_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./info/info.module */ 2564)).then(m => m.InfoPageModule)
     }
 ];
 let EspecialistasPageRoutingModule = class EspecialistasPageRoutingModule {
@@ -101,15 +105,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let EspecialistasPage = class EspecialistasPage {
-    constructor(_services) {
-        this._services = _services;
-        this.getPosts = [];
-        this._services.getPosts().subscribe(data => {
-            this.getPosts = data;
-            console.log(this.getPosts);
-        });
+    constructor(api) {
+        this.api = api;
+        this.listado = [];
     }
     ngOnInit() {
+        this.listar();
+    }
+    listar() {
+        this.api.getUsers();
+        this.listado = this.api.listado;
     }
 };
 EspecialistasPage.ctorParameters = () => [
@@ -124,113 +129,6 @@ EspecialistasPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
 ], EspecialistasPage);
 
 
-
-/***/ }),
-
-/***/ 5830:
-/*!*****************************************!*\
-  !*** ./src/app/services/api.service.ts ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ApiService": () => (/* binding */ ApiService)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common/http */ 8784);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ 8919);
-
-
-
-
-let ApiService = class ApiService {
-    // Se declara la variable http de tipo HttpClient
-    constructor(http) {
-        this.http = http;
-        this.httpOptions = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__.HttpHeaders({
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            })
-        };
-        // Se establece la base url del API a consumir
-        this.apiURL = 'http://127.0.0.1:8000/api/tipo_especialidad';
-    }
-    createPost(post) {
-        return this.http.post(this.apiURL + '/posts', post, this.httpOptions).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.retry)(3));
-    }
-    getPosts() {
-        return this.http.get(this.apiURL + '/posts/').pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.retry)(3));
-    }
-};
-ApiService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_0__.HttpClient }
-];
-ApiService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
-        providedIn: 'root'
-    })
-], ApiService);
-
-
-
-/***/ }),
-
-/***/ 8919:
-/*!****************************************************************!*\
-  !*** ./node_modules/rxjs/_esm2015/internal/operators/retry.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "retry": () => (/* binding */ retry)
-/* harmony export */ });
-/* harmony import */ var _Subscriber__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Subscriber */ 14);
-
-function retry(count = -1) {
-  return source => source.lift(new RetryOperator(count, source));
-}
-
-class RetryOperator {
-  constructor(count, source) {
-    this.count = count;
-    this.source = source;
-  }
-
-  call(subscriber, source) {
-    return source.subscribe(new RetrySubscriber(subscriber, this.count, this.source));
-  }
-
-}
-
-class RetrySubscriber extends _Subscriber__WEBPACK_IMPORTED_MODULE_0__.Subscriber {
-  constructor(destination, count, source) {
-    super(destination);
-    this.count = count;
-    this.source = source;
-  }
-
-  error(err) {
-    if (!this.isStopped) {
-      const {
-        source,
-        count
-      } = this;
-
-      if (count === 0) {
-        return super.error(err);
-      } else if (count > -1) {
-        this.count = count - 1;
-      }
-
-      source.subscribe(this._unsubscribeAndRecycle());
-    }
-  }
-
-}
 
 /***/ }),
 
@@ -250,7 +148,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
   \************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>especialistas</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n</ion-content>\n";
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>especialistas</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n\n\n<ion-content>\n  <div *ngIf=\"listado.length > 0\">\n\n    <ion-list>\n\n      <ion-item-sliding *ngFor=\"let aux of listado\" [routerLink]=\"['/especialistas/info/', aux.id]\">\n\n        <ion-item>\n          <ion-avatar slot=\"start\">\n            <img alt=\"Silhouette of a person's head\" src=\"https://es.web.img2.acsta.net/c_162_216/pictures/19/06/22/13/38/1944794.jpg\"/>\n          </ion-avatar>\n\n          <ion-label>\n            <p style=\"word-wrap: break-word; white-space: normal;\">{{aux.name}}</p>\n            <p style=\"word-wrap: break-word; white-space: normal;\">{{aux.username}}</p>\n          </ion-label>\n        </ion-item>\n\n      </ion-item-sliding>\n\n    </ion-list>\n  </div>\n  \n</ion-content>\n\n\n";
 
 /***/ })
 

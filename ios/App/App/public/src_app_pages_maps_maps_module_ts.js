@@ -1,20 +1,20 @@
 "use strict";
-(self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_e404_e404_module_ts"],{
+(self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_maps_maps_module_ts"],{
 
-/***/ 3841:
+/***/ 2445:
 /*!***************************************************!*\
-  !*** ./src/app/pages/e404/e404-routing.module.ts ***!
+  !*** ./src/app/pages/maps/maps-routing.module.ts ***!
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "E404PageRoutingModule": () => (/* binding */ E404PageRoutingModule)
+/* harmony export */   "MapsPageRoutingModule": () => (/* binding */ MapsPageRoutingModule)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 3184);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 2816);
-/* harmony import */ var _e404_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./e404.page */ 5078);
+/* harmony import */ var _maps_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./maps.page */ 4649);
 
 
 
@@ -22,39 +22,39 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
-        component: _e404_page__WEBPACK_IMPORTED_MODULE_0__.E404Page
+        component: _maps_page__WEBPACK_IMPORTED_MODULE_0__.MapsPage
     }
 ];
-let E404PageRoutingModule = class E404PageRoutingModule {
+let MapsPageRoutingModule = class MapsPageRoutingModule {
 };
-E404PageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
+MapsPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.NgModule)({
         imports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule.forChild(routes)],
         exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule],
     })
-], E404PageRoutingModule);
+], MapsPageRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 2547:
+/***/ 5177:
 /*!*******************************************!*\
-  !*** ./src/app/pages/e404/e404.module.ts ***!
+  !*** ./src/app/pages/maps/maps.module.ts ***!
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "E404PageModule": () => (/* binding */ E404PageModule)
+/* harmony export */   "MapsPageModule": () => (/* binding */ MapsPageModule)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 3184);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 6362);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 587);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var _e404_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./e404-routing.module */ 3841);
-/* harmony import */ var _e404_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./e404.page */ 5078);
+/* harmony import */ var _maps_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./maps-routing.module */ 2445);
+/* harmony import */ var _maps_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./maps.page */ 4649);
 
 
 
@@ -62,79 +62,79 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let E404PageModule = class E404PageModule {
+let MapsPageModule = class MapsPageModule {
 };
-E404PageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+MapsPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.NgModule)({
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_4__.CommonModule,
             _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule,
             _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule,
-            _e404_routing_module__WEBPACK_IMPORTED_MODULE_0__.E404PageRoutingModule
+            _maps_routing_module__WEBPACK_IMPORTED_MODULE_0__.MapsPageRoutingModule
         ],
-        declarations: [_e404_page__WEBPACK_IMPORTED_MODULE_1__.E404Page]
+        declarations: [_maps_page__WEBPACK_IMPORTED_MODULE_1__.MapsPage]
     })
-], E404PageModule);
+], MapsPageModule);
 
 
 
 /***/ }),
 
-/***/ 5078:
+/***/ 4649:
 /*!*****************************************!*\
-  !*** ./src/app/pages/e404/e404.page.ts ***!
+  !*** ./src/app/pages/maps/maps.page.ts ***!
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "E404Page": () => (/* binding */ E404Page)
+/* harmony export */   "MapsPage": () => (/* binding */ MapsPage)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _e404_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./e404.page.html?ngResource */ 9191);
-/* harmony import */ var _e404_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./e404.page.scss?ngResource */ 1793);
+/* harmony import */ var _maps_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./maps.page.html?ngResource */ 5562);
+/* harmony import */ var _maps_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./maps.page.scss?ngResource */ 9947);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 3184);
 
 
 
 
-let E404Page = class E404Page {
+let MapsPage = class MapsPage {
     constructor() { }
     ngOnInit() {
     }
 };
-E404Page.ctorParameters = () => [];
-E404Page = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+MapsPage.ctorParameters = () => [];
+MapsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
-        selector: 'app-e404',
-        template: _e404_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
-        styles: [_e404_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
+        selector: 'app-maps',
+        template: _maps_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_maps_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
     })
-], E404Page);
+], MapsPage);
 
 
 
 /***/ }),
 
-/***/ 1793:
+/***/ 9947:
 /*!******************************************************!*\
-  !*** ./src/app/pages/e404/e404.page.scss?ngResource ***!
+  !*** ./src/app/pages/maps/maps.page.scss?ngResource ***!
   \******************************************************/
 /***/ ((module) => {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJlNDA0LnBhZ2Uuc2NzcyJ9 */";
+module.exports = "ion-content {\n  --background: #ecf4ff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hcHMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0kscUJBQUE7QUFDSiIsImZpbGUiOiJtYXBzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IHtcclxuICAgIC0tYmFja2dyb3VuZDogI2VjZjRmZjtcclxuICAgIFxyXG4gIH0iXX0= */";
 
 /***/ }),
 
-/***/ 9191:
+/***/ 5562:
 /*!******************************************************!*\
-  !*** ./src/app/pages/e404/e404.page.html?ngResource ***!
+  !*** ./src/app/pages/maps/maps.page.html?ngResource ***!
   \******************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Upss Página No encontrada </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\" >\n  <ion-img src=\"assets/images/e404.svg\"></ion-img>\n\n  <ion-button class=\"ion-margin-top\" expand=\"block\"  [routerLink]=\"['/login']\" > Regresar </ion-button>\n\n</ion-content>\n";
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>maps</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n<p>pone el mapa maldito XD</p>\r\n</ion-content>\r\n";
 
 /***/ })
 
 }]);
-//# sourceMappingURL=src_app_pages_e404_e404_module_ts.js.map
+//# sourceMappingURL=src_app_pages_maps_maps_module_ts.js.map

@@ -11,9 +11,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppRoutingModule": () => (/* binding */ AppRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ 2816);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 2816);
+/* harmony import */ var _services_aut_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/aut.service */ 5591);
+
 
 
 
@@ -24,8 +26,34 @@ const routes = [
         pathMatch: 'full'
     },
     {
+        path: 'login',
+        redirectTo: 'login',
+        pathMatch: 'full'
+    },
+    {
         path: 'home',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_home_home_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/home/home.module */ 7994)).then(m => m.HomePageModule)
+        redirectTo: 'home',
+        pathMatch: 'full'
+    },
+    {
+        path: 'consultas',
+        redirectTo: 'consultas',
+        pathMatch: 'full'
+    },
+    {
+        path: 'especialistas',
+        redirectTo: 'especialistas',
+        pathMatch: 'full'
+    },
+    {
+        path: 'house',
+        redirectTo: 'house',
+        pathMatch: 'full'
+    },
+    {
+        path: 'home',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_home_home_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/home/home.module */ 7994)).then(m => m.HomePageModule),
+        canActivate: [_services_aut_service__WEBPACK_IMPORTED_MODULE_0__.AutService]
     },
     {
         path: 'login',
@@ -37,21 +65,26 @@ const routes = [
     },
     {
         path: 'especialistas',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_especialistas_especialistas_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/especialistas/especialistas.module */ 9452)).then(m => m.EspecialistasPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_especialistas_especialistas_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/especialistas/especialistas.module */ 9452)).then(m => m.EspecialistasPageModule)
     },
     {
         path: 'consultas',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_consultas_consultas_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/consultas/consultas.module */ 2991)).then(m => m.ConsultasPageModule)
     },
+    {
+        path: '**',
+        redirectTo: 'e404',
+        pathMatch: 'full'
+    },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
-AppRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.NgModule)({
+AppRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.NgModule)({
         imports: [
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__.RouterModule.forRoot(routes, { preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_2__.PreloadAllModules })
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule.forRoot(routes, { preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_3__.PreloadAllModules })
         ],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__.RouterModule]
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule]
     })
 ], AppRoutingModule);
 
@@ -167,7 +200,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 3184);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/platform-browser */ 318);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/router */ 2816);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/router */ 2816);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.component */ 5041);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app-routing.module */ 158);
@@ -178,6 +211,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ 7954);
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ 1714);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ 8784);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common */ 6362);
+
 
 
 
@@ -200,16 +235,59 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
         entryComponents: [],
         imports: [_angular_common_http__WEBPACK_IMPORTED_MODULE_9__.HttpClientModule, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_10__.BrowserModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.IonicModule.forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_1__.AppRoutingModule, _ionic_storage__WEBPACK_IMPORTED_MODULE_12__.IonicStorageModule.forRoot()],
         providers: [
+            { provide: _angular_common__WEBPACK_IMPORTED_MODULE_13__.LocationStrategy, useClass: _angular_common__WEBPACK_IMPORTED_MODULE_13__.HashLocationStrategy },
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__.StatusBar,
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__.SplashScreen,
             _awesome_cordova_plugins_sqlite_ngx__WEBPACK_IMPORTED_MODULE_2__.SQLite,
             _services_db_service__WEBPACK_IMPORTED_MODULE_3__.DbService,
             _services_autenthication_service__WEBPACK_IMPORTED_MODULE_4__.AutenthicationService,
-            { provide: _angular_router__WEBPACK_IMPORTED_MODULE_13__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.IonicRouteStrategy }
+            { provide: _angular_router__WEBPACK_IMPORTED_MODULE_14__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.IonicRouteStrategy }
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_0__.AppComponent],
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ 5591:
+/*!*****************************************!*\
+  !*** ./src/app/services/aut.service.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AutService": () => (/* binding */ AutService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ 2816);
+/* harmony import */ var _autenthication_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./autenthication.service */ 280);
+
+
+
+
+let AutService = class AutService {
+    constructor(authenticationService, router) {
+        this.authenticationService = authenticationService;
+        this.router = router;
+    }
+    canActivate() {
+        return this.authenticationService.isAuthenticated();
+    }
+};
+AutService.ctorParameters = () => [
+    { type: _autenthication_service__WEBPACK_IMPORTED_MODULE_0__.AutenthicationService },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__.Router }
+];
+AutService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
+        providedIn: 'root'
+    })
+], AutService);
 
 
 
@@ -468,7 +546,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    MAPBOX_KEY: 'YOUR_MAPBOX_ACCESS_TOKEN'
+    google_maps_api_key: 'AIzaSyBOF_DbZZGOOAcp_kZYjiT5B9-OyF6e6bs'
 };
 /*
  * For easier debugging in development mode, you can import the following file

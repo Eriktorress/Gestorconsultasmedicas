@@ -90,12 +90,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AgregarPage": () => (/* binding */ AgregarPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _agregar_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./agregar.page.html?ngResource */ 34);
 /* harmony import */ var _agregar_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./agregar.page.scss?ngResource */ 9456);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 2816);
-/* harmony import */ var src_app_services_dbconsulta_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/dbconsulta.service */ 1234);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 2816);
+/* harmony import */ var src_app_services_api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/api.service */ 5830);
+/* harmony import */ var src_app_services_dbconsulta_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/dbconsulta.service */ 1234);
+
 
 
 
@@ -103,12 +105,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AgregarPage = class AgregarPage {
-    constructor(dbconsulta, router) {
+    constructor(dbconsulta, router, api) {
         this.dbconsulta = dbconsulta;
         this.router = router;
+        this.api = api;
         this.tituloConsulta = "";
         this.especialistaConsulta = "";
         this.textoConsulta = "";
+        this.listado = [];
     }
     guardar() {
         this.dbconsulta.addConsulta(this.tituloConsulta, this.especialistaConsulta, this.textoConsulta);
@@ -116,14 +120,27 @@ let AgregarPage = class AgregarPage {
         this.router.navigate(['/consultas']);
     }
     ngOnInit() {
+        this.listar();
+    }
+    listar() {
+        this.api.getUsers();
+        this.listado = this.api.listado;
+    }
+    onSelectChange(selectedValue) {
+        //Selected Value Id will get as param ==> selectedValue
+        //Selected Object
+        var item = this.listado.find(item => item['name'] === selectedValue);
+        //Position of object in array
+        var postion = this.listado.findIndex(item => item['name'] === selectedValue);
     }
 };
 AgregarPage.ctorParameters = () => [
-    { type: src_app_services_dbconsulta_service__WEBPACK_IMPORTED_MODULE_2__.DbconsultaService },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router }
+    { type: src_app_services_dbconsulta_service__WEBPACK_IMPORTED_MODULE_3__.DbconsultaService },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router },
+    { type: src_app_services_api_service__WEBPACK_IMPORTED_MODULE_2__.ApiService }
 ];
-AgregarPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+AgregarPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
         selector: 'app-agregar',
         template: _agregar_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_agregar_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -150,7 +167,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
   \**********************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Agregar Consulta</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<div class=\"ion-padding-vertical\">\n  <ion-card class=\"ion-text-center\">\n    <ion-card-title>\n      <ion-label>\n        <h1>Datos Consulta</h1>\n      </ion-label>\n    </ion-card-title>\n\n    <ion-card-content>\n      <ion-item>\n        <ion-label position=\"floating\">Titulo</ion-label>\n        <ion-input type=\"text\" [(ngModel)]=\"tituloConsulta\"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"floating\">Especialista</ion-label>\n        <ion-input type=\"text\" [(ngModel)]=\"especialistaConsulta\"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"floating\">Texto</ion-label>\n        <ion-input type=\"text\" [(ngModel)]=\"textoConsulta\"></ion-input>\n      </ion-item>\n    </ion-card-content>\n    <ion-button shape=\"block\" (click)=\"guardar()\">Guardar Consulta</ion-button>\n  </ion-card>\n\n</div>\n\n</ion-content>";
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Agregar Consulta</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div class=\"ion-padding-vertical\">\n    <ion-card class=\"ion-text-center\">\n      <ion-card-title>\n        <ion-label>\n          <h1>Datos Consulta</h1>\n        </ion-label>\n      </ion-card-title>\n\n      <ion-card-content>\n        <ion-item>\n          <ion-label position=\"floating\">Titulo</ion-label>\n          <ion-input type=\"text\" [(ngModel)]=\"tituloConsulta\"></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-item>\n            <ion-label position=\"floating\">Selecciona Especialista</ion-label>\n            <ion-select [(ngModel)]=\"especialistaConsulta\" (ionChange)=\"onSelectChange($event)\" >\n              <ion-select-option  *ngFor=\"let aux of listado\" [value]=\"aux['name']\">\n                {{aux.name}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"floating\">Texto</ion-label>\n          <ion-input type=\"text\" [(ngModel)]=\"textoConsulta\"></ion-input>\n        </ion-item>\n      </ion-card-content>\n      <ion-button shape=\"block\" (click)=\"guardar()\">Guardar Consulta</ion-button>\n    </ion-card>\n  <!-- <ion-input type=\"text\" [(ngModel)]=\"especialistaConsulta\"></ion-input> -->\n  </div>\n\n</ion-content>";
 
 /***/ })
 
